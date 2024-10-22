@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ - PROGRAMA DE CONSCIENTIZAÇÃO EM SEGURANÇA DA INFORMAÇÃO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Bangers', cursive, sans-serif;
+            background: url(fundo.png) no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            margin: 0;
+            color: #00e6e6;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8); /* Aumentei a opacidade para dar mais contraste */
+            box-shadow: 0 0 20px rgba(0, 230, 230, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 500px; /* Aumentei a largura para caber melhor o conteúdo */
+            border: 3px solid #00e6e6;
+        }
+        .pergunta {
+            font-size: 1.8em; /* Aumentei o tamanho da fonte */
+            margin-bottom: 20px;
+            color: #00e6e6;
+            text-shadow: 0 0 10px #00ffff, 0 0 30px #00e6e6;
+        }
+        .opcao {
+            background-color: rgba(0, 0, 0, 0.6); /* Mais contraste nas opções */
+            border: 2px solid #00e6e6;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            color: #00e6e6;
+            font-size: 1.4em; /* Aumentei o tamanho da fonte para as opções */
+            text-shadow: 0 0 10px #00ffff, 0 0 30px #00e6e6;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+        .opcao:hover {
+            background-color: rgba(0, 230, 230, 0.2); /* Mais contraste no hover */
+            box-shadow: 0 0 15px #00ffff;
+            transform: scale(1.05);
+        }
+        .botao-neon {
+            background-color: transparent;
+            color: #00e6e6;
+            border: 2px solid #00e6e6;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.5em; /* Aumentei o tamanho da fonte para o botão */
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            text-shadow: 0 0 10px #00ffff, 0 0 30px #00e6e6;
+        }
+        .botao-neon:hover {
+            background-color: rgba(0, 230, 230, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #00ffff;
+        }
+        .cronometro {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ff6600; /* Destaque maior no cronômetro */
+            text-shadow: 0 0 15px #ff6600, 0 0 30px #ff3300;
+        }
+        #resultado {
+            font-size: 2em;
+            color: #00e6e6;
+            text-shadow: 0 0 15px #00ffff, 0 0 30px #00e6e6;
+        }
+        #trofeu {
+            font-size: 3em;
+            margin: 20px 0;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+        }
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">   
+        <div id="pergunta1" class="container-pergunta">
+            <div class="cronometro" id="cronometro1">50</div>
+            <div class="pergunta">O que é o Phishing?</div>
+            <div class="opcao" data-resposta="a" onclick="verificarResposta(1, this)">Um tipo de ataque de negação de serviço (DDoS)</div>
+            <div class="opcao" data-resposta="b" onclick="verificarResposta(1, this)">Uma tentativa de enganar pessoas para que forneçam informações confidenciais</div>
+            <div class="opcao" data-resposta="c" onclick="verificarResposta(1, this)">Um software usado para criptografar arquivos</div>
+            <div class="opcao" data-resposta="d" onclick="verificarResposta(1, this)">Um tipo de firewall</div>
+        </div>
+
+        <div id="pergunta2" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro2">50</div>
+            <div class="pergunta">Qual é a maneira mais eficaz de proteger suas senhas?</div>
+            <div class="opcao" data-resposta="a" onclick="verificarResposta(2, this)">Usar a mesma senha em todos os serviços</div>
+            <div class="opcao" data-resposta="b" onclick="verificarResposta(2, this)">Compartilhar suas senhas com amigos de confiança</div>
+            <div class="opcao" data-resposta="c" onclick="verificarResposta(2, this)">Usar senhas fortes e diferentes para cada serviço, utilizando caracteres maiúsculos, minúsculos e símbolos</div>
+            <div class="opcao" data-resposta="d" onclick="verificarResposta(2, this)">Escrever suas senhas em um post-it e colar no computador</div>
+        </div>
+
+        <div id="pergunta3" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro3">50</div>
+            <div class="pergunta">O que é a autenticação de dois fatores (2FA)?</div>
+            <div class="opcao" data-resposta="a" onclick="verificarResposta(3, this)">Um método de fazer login sem senha</div>
+            <div class="opcao" data-resposta="b" onclick="verificarResposta(3, this)">Um processo de usar duas redes ao mesmo tempo</div>
+            <div class="opcao" data-resposta="c" onclick="verificarResposta(3, this)">Uma camada extra de segurança que exige duas formas de verificação</div>
+            <div class="opcao" data-resposta="d" onclick="verificarResposta(3, this)">Um software para criptografar arquivos</div>
+        </div>
+
+        <div id="pergunta4" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro4">50</div>
+            <div class="pergunta">Qual destes é um exemplo de malware?</div>
+            <div class="opcao" data-resposta="a" onclick="verificarResposta(4, this)">Firewall</div>
+            <div class="opcao" data-resposta="b" onclick="verificarResposta(4, this)">Vírus</div>
+            <div class="opcao" data-resposta="c" onclick="verificarResposta(4, this)">Antivírus</div>
+            <div class="opcao" data-resposta="d" onclick="verificarResposta(4, this)">Backup</div>
+        </div>
+
+        <div id="pergunta5" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro5">50</div>
+            <div class="pergunta">O que significa o termo "engenharia social" no contexto de segurança da informação?</div>
+            <div class="opcao" data-resposta="a" onclick="verificarResposta(5, this)">O uso de algoritmos para proteger dados</div>
+            <div class="opcao" data-resposta="b" onclick="verificarResposta(5, this)">Um método de ataque que envolve manipulação psicológica para obter informações</div>
+            <div class="opcao" data-resposta="c" onclick="verificarResposta(5, this)">Um tipo de software que monitora o tráfego de rede</div>
+            <div class="opcao" data-resposta="d" onclick="verificarResposta(5, this)">Um processo de criptografia de dados</div>
+        </div>
+
+        <div id="resultadoFinal" class="oculto">
+            <div id="resultado"></div>
+            <div id="trofeu"></div>
+            <button class="botao-neon" onclick="refazerQuiz()">Refazer Quiz</button>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
